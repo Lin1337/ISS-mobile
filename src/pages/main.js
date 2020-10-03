@@ -1,10 +1,32 @@
 
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-
-import MapView from 'react-native-maps'
+import api from '../services/api';
+import MapView from 'react-native-maps';
 
 export default class App extends Component {
+
+
+state = {
+  docs: [],
+};
+
+  componentDidMount(){
+    this.getISSInfo();
+  }
+   getISSInfo = async () => {
+    try {
+      let response = await fetch(
+        'https://api.wheretheiss.at/v1/satellites/25544'
+      );
+      let json = await response.json();
+      console.log(json);
+      return json.latitude;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   render() {
     return (
