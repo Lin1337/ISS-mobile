@@ -1,4 +1,10 @@
 build-android:
+    on:
+        push:
+          branches:
+            - master
+   
+   
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
