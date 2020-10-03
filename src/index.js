@@ -5,8 +5,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MainAction from './pages/main'
 import Info from './pages/info';
 import { NavigationContainer } from '@react-navigation/native';
+import Icon from "react-native-vector-icons/FontAwesome";
 const Tab = createBottomTabNavigator();
-import MaterialIcons from 'react-native-vector-icons';
 
 function HomeScreen() {
   return (
@@ -31,7 +31,28 @@ export default function MyTabs() {
   return (
     
     <NavigationContainer>
-    <Tab.Navigator>
+    <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+
+        if (route.name === 'Home') {
+          iconName = focused
+            ? 'home'
+            : 'home';
+        } else if (route.name === 'Info') {
+          iconName = focused ? 'info-circle' : 'info-circle';
+        }
+
+        // You can return any component that you like here!
+        return <Icon name={iconName} size={size} color={color} />;
+      },
+    })}
+		tabBarOptions={{
+		activeTintColor: '#9C27B0',
+		inactiveTintColor: '#777',
+	}}
+>
       <Tab.Screen name="Home" component={MainAction} />
       <Tab.Screen name="Info" component={Info} />
     </Tab.Navigator>
