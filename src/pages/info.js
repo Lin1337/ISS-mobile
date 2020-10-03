@@ -1,12 +1,13 @@
 
 import React, {Component} from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-       
+        <Text>Caganeira </Text>
+  <Text>Suprema</Text>
       </View>
     );
   }
