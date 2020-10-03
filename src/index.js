@@ -6,7 +6,7 @@ import MainAction from './pages/main'
 import Info from './pages/info';
 import { NavigationContainer } from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
-
+import MaterialIcons from 'react-native-vector-icons';
 
 function HomeScreen() {
   return (
