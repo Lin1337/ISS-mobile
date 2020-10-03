@@ -17,10 +17,10 @@ state = {
    getISSInfo = async () => {
     try {
       let response = await fetch(
-        'https://api.wheretheiss.at/v1/satellites/25544'
+        'http://api.open-notify.org/iss-now.json'
       );
       let json = await response.json();
-      console.log(json);
+      console.log(json.iss_position);
       return json.latitude;
     } catch (error) {
       console.error(error);
