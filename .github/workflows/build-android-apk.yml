@@ -3,9 +3,9 @@ on:
       branches:
         - master
 
+ jobs:
 
-
-build-android:
+  build-android:
     
     runs-on: ubuntu-latest
     steps: 
