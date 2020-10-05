@@ -19,15 +19,19 @@ export default class App extends React.Component {
     
      let lat = parseInt(res.data.iss_position.latitude);
      let log = parseInt(res.data.iss_position.longitude);
+     let latDelta = lat/height;
+     let logDelta = log/width; 
    this.setState({
      region:{
        latitude: lat,
        longitude: log,
+       latitudeDelta: latDelta,
+       longitudeDelta: logDelta,
      }
    })
-   let yes = typeof this.state.region.latitude;
+   let yes = typeof height;
 
-   console.log(width);
+   console.log(this.state.region);
    })
    
  } 
@@ -39,6 +43,13 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <MapView 
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        region={this.state.region}
         style={styles.mapStyle} />
       </View>
     );
