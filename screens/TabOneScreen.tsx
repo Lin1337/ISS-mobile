@@ -2,6 +2,10 @@ import React from 'react';
 import MapView from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import axios from 'axios';
+
+const {height, width} = Dimensions.get('window');
+
+
 export default class App extends React.Component {
  state = {
   region: {
@@ -23,7 +27,7 @@ export default class App extends React.Component {
    })
    let yes = typeof this.state.region.latitude;
 
-   console.log(yes);
+   console.log(width);
    })
    
  } 
@@ -34,7 +38,8 @@ export default class App extends React.Component {
  render() {
     return (
       <View style={styles.container}>
-        <MapView style={styles.mapStyle} />
+        <MapView 
+        style={styles.mapStyle} />
       </View>
     );
   }
