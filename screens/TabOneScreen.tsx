@@ -12,14 +12,18 @@ export default class App extends React.Component {
  }}
  componentDidMount(){
    axios.get('http://api.open-notify.org/iss-now.json').then(res =>{
-    console.log(res.data.iss_position.latitude);
+    
+     let lat = parseInt(res.data.iss_position.latitude);
+     let log = parseInt(res.data.iss_position.longitude);
    this.setState({
      region:{
-       latitude: res.data.iss_position.latitude,
-       longitude: res.data.iss_position.longitude,
+       latitude: lat,
+       longitude: log,
      }
    })
-   console.log(this.state.region);
+   let yes = typeof this.state.region.latitude;
+
+   console.log(yes);
    })
    
  } 
