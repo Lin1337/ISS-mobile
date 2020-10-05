@@ -10,14 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - name: Install npm dependencies
-        run: |
-          yarn install
-      - name: Build Android Release
-        run: |
-          cd android && chmod +x gradlew && ./gradlew assembleRelease -PMYAPP_UPLOAD_STORE_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}' -PMYAPP_UPLOAD_KEY_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}'
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
         with:
           node-version: 12.x
       - uses: expo/expo-github-action@v5
