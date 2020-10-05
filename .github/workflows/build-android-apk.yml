@@ -20,4 +20,3 @@ jobs:
       - run: yarn install
       - run: expo publish
       - run: expo build:android
-      - run: expo build:ios

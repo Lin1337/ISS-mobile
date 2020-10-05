@@ -7,6 +7,7 @@ const {height, width} = Dimensions.get('window');
 
 export default class App extends React.Component {
  state = {
+  marker: 0,
   region: {
     latitude: 0,
     longitude: 0,
@@ -14,13 +15,17 @@ export default class App extends React.Component {
     longitudeDelta: 0,
   }
 }
+
+
  componentDidMount(){
    axios.get('http://api.open-notify.org/iss-now.json').then(res =>{
     
      let lat = parseInt(res.data.iss_position.latitude);
      let log = parseInt(res.data.iss_position.longitude);
-     let latDelta = lat/height;
-     let logDelta = log/width; 
+    /* let latDelta = lat/height;
+     let logDelta = log/width; */
+    let latDelta = 100;
+     let logDelta = 100; 
    this.setState({
      region:{
        latitude: lat,
@@ -29,11 +34,12 @@ export default class App extends React.Component {
        longitudeDelta: logDelta,
      }
    })
-   let yes = typeof height;
-
-   console.log(this.state.region);
+   let markerCords = +lat + +log;
+   console.log(lat);
+   console.log(markerCords);
    })
  } 
+ 
  render() {
     return (
       <View style={styles.container}>
@@ -49,7 +55,10 @@ export default class App extends React.Component {
         region={this.state.region}
         style={styles.mapView}>
       <Marker 
-      coordinate={this.state.region}></Marker>
+      coordinate={this.state.region}>
+     <Text style={styles.pinText}>ISS</Text>
+        <Image source={{ uri: "https://image.flaticon.com/icons/png/512/26/26249.png" }} style={{ width: 150, height: 150 }} />
+      </Marker>
 
         </MapView>
         
@@ -83,4 +92,11 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32
   },
+  pinText: {
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 20,
+    marginBottom: 10,
+},
 });

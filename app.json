@@ -3,7 +3,7 @@
     "name": "Iss-mobile",
     "slug": "Iss-mobile",
     "ios": {
-      "bundleIdentifier": "com.yourcompany.yourappname",
+      "bundleIdentifier": "com.lin1337.issmobile",
       "buildNumber": "1.0.0"
     },
     "android": {
