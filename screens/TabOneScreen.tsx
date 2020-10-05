@@ -4,13 +4,23 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import axios from 'axios';
 export default class App extends React.Component {
  state = {
-   iss_position: []
- }
+  region: {
+    latitude: 0,
+    longitude: 0,
+    latitudeDelta: 0,
+    longitudeDelta: 0,
+ }}
  componentDidMount(){
    axios.get('http://api.open-notify.org/iss-now.json').then(res =>{
-    console.log(res.data); 
-   this.setState({iss_postion: res.data.iss_position})
+    
+   this.setState({
+     region:{
+       latitude: res.data.iss_position.latitude,
+       longitude: res.data.iss_position.longitude,
+     }
    })
+   })
+   console.log(this.state.region);
  } 
  
  
