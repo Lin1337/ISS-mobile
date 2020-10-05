@@ -1,23 +1,21 @@
+name: Expo Publish
 on:
-    push:
-      branches:
-        - master
-
+  push:
+    branches:
+      - master
 jobs:
-
-  build-android:
-    
+  publish:
+    name: Install and publish
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v2
-      - name: Install npm dependencies
-        run: |
-          yarn install
-      - name: Build Android Release
-        run: |
-          cd android && ./gradlew assembleRelease
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+      - uses: actions/setup-node@v1
         with:
-          name: app-release.apk
-          path: android/app/build/outputs/apk/release/
+          node-version: 12.x
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 3.x
+          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+      - run: yarn install
+      - run: expo publish
