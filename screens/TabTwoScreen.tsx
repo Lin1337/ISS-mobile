@@ -1,15 +1,18 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet, Button } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-
+import { IconButton, Colors } from 'react-native-paper';
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabTwoScreen.js" />
+      <IconButton
+    icon="github"
+    color={Colors.red500}
+    size={20}
+    onPress={() => console.log('Pressed')}
+  />
     </View>
   );
 }
