@@ -1,8 +1,7 @@
 import React from 'react';
-import MapView from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 import axios from 'axios';
-
 const {height, width} = Dimensions.get('window');
 
 
@@ -13,7 +12,8 @@ export default class App extends React.Component {
     longitude: 0,
     latitudeDelta: 0,
     longitudeDelta: 0,
- }}
+  }
+}
  componentDidMount(){
    axios.get('http://api.open-notify.org/iss-now.json').then(res =>{
     
@@ -33,15 +33,12 @@ export default class App extends React.Component {
 
    console.log(this.state.region);
    })
-   
  } 
- 
- 
- 
- 
  render() {
     return (
       <View style={styles.container}>
+       
+       
         <MapView 
         initialRegion={{
           latitude: 37.78825,
@@ -50,21 +47,40 @@ export default class App extends React.Component {
           longitudeDelta: 0.0421,
         }}
         region={this.state.region}
-        style={styles.mapStyle} />
+        style={styles.mapView}>
+      <Marker 
+      coordinate={this.state.region}></Marker>
+
+        </MapView>
+        
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
+
   },
-  mapStyle: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+
+  mapView: {
+    position: 'absolute',
+    top: 20,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+
+  mapCenterMarkerView: {
+    flex: 1,
+  },
+
+  mapCenterMarker: {
+    width: 32,
+    height: 32
   },
 });
