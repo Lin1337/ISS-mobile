@@ -2,6 +2,10 @@
   "expo": {
     "name": "Iss-mobile",
     "slug": "Iss-mobile",
+    "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname",
+      "buildNumber": "1.0.0"
+    },
     "android": {
       "package": "com.lin1337.issmobile",
       "versionCode": 1},
@@ -21,9 +25,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "web": {
       "favicon": "./assets/images/favicon.png"
     }
